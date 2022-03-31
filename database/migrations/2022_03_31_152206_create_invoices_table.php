@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('manage_service_engineer_id')->nullable()->comment('Relation with manage_service_engineers table');
-            $table->unsignedBigInteger('complain_id')->nullable()->comment('Relation with complains table');
+            $table->unsignedBigInteger('complaint_id')->nullable()->comment('Relation with complaint table');
 
             $table->text('description')->collation('utf8mb4_unicode_ci')->nullable();
             $table->tinyInteger('is_sent_mail')->default(0)->comment('0 = not , 1 = send');

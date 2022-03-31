@@ -52,7 +52,14 @@ Route::post('/register', [AuthController::class, 'create'])->name('register.save
 
 //check auth route
 Route::group(['middleware' => 'auth'], function () {
+
+    //dashbaord
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //Register Complaint
+    Route::get('register-complaint', function () {
+        return view('complaintForm');
+    })->name('add.complaint');
 
     Route::get('user/profile', function () {
         // Uses Auth Middleware

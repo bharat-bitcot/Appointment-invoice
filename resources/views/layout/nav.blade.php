@@ -14,7 +14,7 @@
             @break
        @default
             <a href="{{ route('dashboard') }}" class="{{ ( Route::currentRouteName() == 'dashboard' ) ? 'active' : '' }}"> Dashbaord </a>
-            <a href="#"> Rasise a Complain </a>
+            <a href="#"> Register a Complaint </a>
             <a href="#"> Help </a>
             <a href="#"> Customer Care</a>
            @break

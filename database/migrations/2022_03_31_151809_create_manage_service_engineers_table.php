@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id')->nullable()->comment('Relation with users table');
-            $table->unsignedBigInteger('complain_id')->nullable()->comment('Relation with complains table');
+            $table->unsignedBigInteger('complaint_id')->nullable()->comment('Relation with complaint table');
 
             $table->text('description')->collation('utf8mb4_unicode_ci')->nullable();
             $table->timestamps();

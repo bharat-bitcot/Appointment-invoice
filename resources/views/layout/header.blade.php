@@ -192,6 +192,10 @@
                 color: white;
             }
 
+            .jumbotron h1 {
+                font-size: 42px;
+            }
+
             @keyframes slide {
                 0% {
                 opacity: 0;

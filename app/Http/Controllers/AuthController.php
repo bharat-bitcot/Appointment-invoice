@@ -29,7 +29,8 @@ class AuthController extends Controller
 
             //build condition
             $whereCondition = [
-                'email' => $email
+                'email' => $email,
+                'status' => 1
             ];
 
             //check user existing or not
@@ -78,7 +79,7 @@ class AuthController extends Controller
             'email'      => $request['email'],
             'password'   => bcrypt( $request['password'] ),
             'role_id'    => $request['user_type'] ? $request['user_type'] : 5,
-            'role_id'    => 5,
+            'status'    => 1,
         ];
 
         //create new user
