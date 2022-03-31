@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+//controller
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +26,35 @@ Route::get('/', function () {
 
 //login
 Route::get('/login', function () {
+    if(Auth::check()){
+        return view('/home');
+    }
     return view('login');
 })->name('login');
 
+//validate
+Route::post('validate', [AuthController::class, 'validateLogin'])->name('login.validate');
+
+//logout
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 //register
 Route::get('/register', function () {
+    if(Auth::check()){
+        return view('/home');
+    }
     return view('register');
 })->name('register');
+
+//save user
+Route::post('/register', [AuthController::class, 'create'])->name('register.save');
+
+
+//check auth route
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('user/profile', function () {
+        // Uses Auth Middleware
+    });
+});

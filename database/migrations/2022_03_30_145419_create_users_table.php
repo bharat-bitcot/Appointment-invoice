@@ -18,7 +18,6 @@ return new class extends Migration
 
 
             $table->unsignedBigInteger('role_id')->nullable()->comment('Relation with roles table');
-            $table->string('name');
             $table->string('email',80)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

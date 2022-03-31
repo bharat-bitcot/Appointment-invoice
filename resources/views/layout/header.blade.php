@@ -171,6 +171,27 @@
                 color: red;
             }
 
+            .vertical-menu {
+                width: 200px;
+            }
+
+            .vertical-menu a {
+                background-color: #eee;
+                color: black;
+                display: block;
+                padding: 12px;
+                text-decoration: none;
+            }
+
+            .vertical-menu a:hover {
+                background-color: #ccc;
+            }
+
+            .vertical-menu a.active {
+                background-color: #04AA6D;
+                color: white;
+            }
+
             @keyframes slide {
                 0% {
                 opacity: 0;
@@ -229,7 +250,7 @@
                     <li><a href="#contact">CONTACT</a></li>
 
                     @auth
-                        <li><a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"> Logout </a></li>
+                        <li><a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"> Logout </a></li>
                     @else
                         <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
                         <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
@@ -239,3 +260,4 @@
             </div>
         </div>
     </nav>
+

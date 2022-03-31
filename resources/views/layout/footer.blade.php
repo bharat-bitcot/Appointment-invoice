@@ -9,8 +9,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
+        //login
         $(document).ready(function() {
             $("#loginForm").validate();
+        });
+
+        //register
+        $(document).ready(function() {
+            $("#registerForm").validate({
+                rules : {
+                    password : {
+                        minlength : 5
+                    },
+                    re_password : {
+                        minlength : 5,
+                        equalTo : '[name="password"]'
+                    }
+                }
+            });
         });
     </script>
 

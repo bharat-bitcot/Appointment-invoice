@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
         if(DB::table('users')->count() == 0){
             //Update default entry
             DB::table('users')->insert([
-                'name' 		 => 'admin',
                 'email'		 => 'admin@gmail.com',
                 'password' 	 => bcrypt('admin'),
                 'role_id'    => 1,
