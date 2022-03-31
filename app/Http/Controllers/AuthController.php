@@ -78,7 +78,7 @@ class AuthController extends Controller
             'email'      => $request['email'],
             'password'   => bcrypt( $request['password'] ),
             'role_id'    => $request['user_type'] ? $request['user_type'] : 5,
-            'role_id'    => 1,
+            'role_id'    => 5,
         ];
 
         //create new user
@@ -87,7 +87,7 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        return redirect()->intended('home')->withSuccess('Signed in');
+        return redirect()->intended('dashboard')->withSuccess('Signed in');
     }
 
 
