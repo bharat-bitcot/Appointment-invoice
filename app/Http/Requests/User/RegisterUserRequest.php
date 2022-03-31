@@ -32,7 +32,10 @@ class RegisterUserRequest extends FormRequest
     }
 
     /**
-     * Messgage
+     * Display the Messgage if found any error
+     *
+     *
+     * @return array
      */
     public function messages()
     {

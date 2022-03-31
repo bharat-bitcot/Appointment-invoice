@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 //controller
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\complaintController;
 
 
 /*
@@ -47,7 +48,7 @@ Route::get('/register', function () {
 })->name('register');
 
 //save user
-Route::post('/register', [AuthController::class, 'create'])->name('register.save');
+Route::post('/register', [AuthController::class, 'create'])->name('save.register');
 
 
 //check auth route
@@ -60,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('register-complaint', function () {
         return view('complaintForm');
     })->name('add.complaint');
+
+    //new Complaint Raise
+    Route::post('register-complaint', [complaintController::class, 'create'])->name('save.complaint');
 
     Route::get('user/profile', function () {
         // Uses Auth Middleware

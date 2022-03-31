@@ -9,13 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
-        //login
-        $(document).ready(function() {
-            $("#loginForm").validate();
-        });
 
-        //register
         $(document).ready(function() {
+
+            //login
+            $("#loginForm").validate();
+
+            //register
             $("#registerForm").validate({
                 rules : {
                     password : {
@@ -27,6 +27,9 @@
                     }
                 }
             });
+
+            //Register Complaints
+            $("#registerComplaint").validate();
         });
     </script>
 

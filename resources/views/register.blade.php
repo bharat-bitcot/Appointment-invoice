@@ -33,7 +33,7 @@
                 @endif
 
 
-                {!! Form::open(['route'=>['register.save'], 'method' => 'POST', 'class'=> 'form-horizontal registerForm', 'id'=>'registerForm' ]) !!}
+                {!! Form::open(['route'=>['save.register'], 'method' => 'POST', 'class'=> 'form-horizontal registerForm', 'id'=>'registerForm' ]) !!}
                     {!! Form::token() !!}
                     @csrf
                     <div class="form-group">

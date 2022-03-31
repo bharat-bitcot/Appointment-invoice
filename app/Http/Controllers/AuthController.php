@@ -7,6 +7,7 @@ use App\Http\Requests\User\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -40,7 +41,7 @@ class AuthController extends Controller
 
             if( $userExist && Hash::check( $password, $userExist->password ) ) {
                 if (Auth::attempt($credentials)) {
-                    return redirect()->intended('dashboard')->withSuccess('Signed in');
+                    return redirect()->intended('dashboard')->withSuccess('You Have Successfully Logged in to Invoice Demo');
                 }
             }
 
@@ -71,24 +72,36 @@ class AuthController extends Controller
      * @return redirect
      */
     public function create(RegisterUserRequest $request) {
+        DB::beginTransaction();
+        try {
 
-        //build array
-        $input = [
-            'first_name' => $request['first_name'],
-            'last_name'  => $request['last_name'],
-            'email'      => $request['email'],
-            'password'   => bcrypt( $request['password'] ),
-            'role_id'    => $request['user_type'] ? $request['user_type'] : 5,
-            'status'    => 1,
-        ];
+            //build array
+            $input = [
+                'first_name' => $request['first_name'],
+                'last_name'  => $request['last_name'],
+                'email'      => $request['email'],
+                'password'   => bcrypt( $request['password'] ),
+                'role_id'    => $request['user_type'] ? $request['user_type'] : 5,
+                'status'    => 1,
+            ];
 
-        //create new user
+            //create new user
 
-        $user = User::create($input);
+            $user = User::create($input);
 
-        auth()->login($user);
+            auth()->login($user);
+            DB::commit();
 
-        return redirect()->intended('dashboard')->withSuccess('Signed in');
+            return redirect()->intended('dashboard')->withSuccess('You Have Successfully Logged in to Invoice Demo');
+
+        }catch ( \Exception $e ) {
+
+            DB::rollback();
+            return redirect()->back()->with([
+                'alert-type' => 'error',
+                'message'    => $e->getMessage()
+            ]);
+        }
     }
 
 

@@ -165,7 +165,7 @@
                 font-weight: 300;
             }
 
-            input.error {
+            input.error, textarea.error {
                 border: 2px dashed red;
                 font-weight: 300;
                 color: red;
