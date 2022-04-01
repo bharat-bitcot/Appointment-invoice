@@ -122,4 +122,46 @@ class complaintController extends Controller
             ]);
         }
     }
+
+    /**
+     * Update In progess status
+     *
+     * @param Request $request
+     * @return redirect
+     */
+    public function UpdateInprogressComplaintStatus(Request $request, $id) {
+        DB::beginTransaction();
+        try {
+
+            $complaint = complaint::find($id);
+
+            //get current user id
+            $userId = Auth::id();
+
+            //check the assign the service engineer or not
+            $manageServiceEngineer = manageServiceEngineer::where([ 'user_id' => $userId, 'complaint_id' => $id ] )->first();
+
+            if( $complaint && $manageServiceEngineer ) {
+
+                $input = [
+                    'status' => 1
+                ];
+
+                complaint::updateOrCreate(['id' => $id ],$input);
+            }
+
+            DB::commit();
+
+            return redirect()->route('view.complaint',['id' => $id])->with('success','Successfully has been updated status');
+
+
+        }catch ( \Exception $e ) {
+
+            DB::rollback();
+            return redirect()->back()->with([
+                'alert-type' => 'error',
+                'message'    => $e->getMessage()
+            ]);
+        }
+    }
 }

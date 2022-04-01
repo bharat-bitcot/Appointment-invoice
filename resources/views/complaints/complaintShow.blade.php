@@ -89,6 +89,14 @@
                             {{ isset( $is_assign_service_engineer->user->phone ) ? $is_assign_service_engineer->user->phone : '----'  }}
                         </span>
                     </li>
+                    @if ( $role_id == 4 && $complaint->status == 0 )
+                        <li class="list-group-item">
+                            <h4 class="list-group-item-heading"> Action </h4>
+                            <span class="list-group-item-text">
+                                <a href="{{ route('inprogress.complaint', $complaint->id ) }}" class="btn btn-primary"> Mark as In-Progress </a>
+                            </span>
+                        </li>
+                    @endif
                 </ul>
             </div>
             @endif

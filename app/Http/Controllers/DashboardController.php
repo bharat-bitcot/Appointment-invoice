@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\complaint;
+use App\Models\manageServiceEngineer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,9 @@ class DashboardController extends Controller
             $complaints = complaint::where('user_id',$userId)->paginate(10);
 
         }elseif( isset( $currentuser ) &&  $currentuser->role_id == 4 ) {
+
+            $complaints = manageServiceEngineer::with(['complaint'])->where('user_id',$userId)->paginate(10);
+            return view('dashboard.dashboardEngineer', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaints' => $complaints ]);
 
         }elseif( isset( $currentuser ) &&  $currentuser->role_id == 3 ) {
 

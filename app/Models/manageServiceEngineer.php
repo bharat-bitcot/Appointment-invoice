@@ -29,7 +29,7 @@ class manageServiceEngineer extends Model
     ];
 
     /**
-     * Get the service Engineer detail associated with the user.
+     * Associated with the user.
      */
     public function user()
     {
@@ -37,11 +37,11 @@ class manageServiceEngineer extends Model
     }
 
     /**
-     * Get the comments for the blog post.
+     * Associated with the complaint.
      */
     public function complaint()
     {
-        return $this->hasMany(complaint::class);
+        return $this->belongsTo(complaint::class);
     }
 
 }

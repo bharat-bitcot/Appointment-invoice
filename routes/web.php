@@ -76,6 +76,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Complaints Assign to the Service Engineer
     Route::put('assign-complaint/{id}', [complaintController::class, 'assignServiceEngineer'])->name('assign.complaint');
 
+    //Complaints Assign to the Service Engineer
+    Route::get('inprogress-complaint/{id}', [complaintController::class, 'UpdateInprogressComplaintStatus'])->name('inprogress.complaint');
+
 
 
     /**
