@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\complaintController;
 use App\Http\Controllers\ManageServiceEngineerController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PDFController;
 
 
 /*
@@ -109,6 +110,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //save Invoice by Service Engineer
     Route::post('save-invoice/{id}', [InvoiceController::class, 'save'])->name('save.invoice');
+
+
+    //Generate Invoice Pdf
+    Route::get('generate-invoice/{id}', [PDFController::class, "generateInvoicePDF"])->name('generate.invoice');
 
 
 

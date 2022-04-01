@@ -23,6 +23,7 @@ class invoice extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'generate_id',
         'manage_service_engineer_id',
         'complaint_id',
         'address',
@@ -32,6 +33,14 @@ class invoice extends Model
         'payment_status',
         'payment_type'
     ];
+
+    /**
+     * Associated with the user.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'manage_service_engineer_id');
+    }
 
     /**
      * Associated with the invoice item.

@@ -118,7 +118,7 @@
                             <li class="list-group-item">
                                 <h4 class="list-group-item-heading">
                                     {{ $invoice->address }}
-                                    <a href="#" class="btn btn-primary pull-right">View </a>
+                                    <a href="{{ route('generate.invoice', [ 'id' => $invoice->id ] ) }} " class="btn btn-primary pull-right">View </a>
                                 </h4>
                                 <h4 class="list-group-item-heading">
                                     {{ $invoice->phoneno }}
