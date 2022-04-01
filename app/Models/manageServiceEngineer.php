@@ -28,4 +28,20 @@ class manageServiceEngineer extends Model
         'description'
     ];
 
+    /**
+     * Get the service Engineer detail associated with the user.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function complaint()
+    {
+        return $this->hasMany(complaint::class);
+    }
+
 }

@@ -24,7 +24,7 @@ use App\Http\Controllers\ManageServiceEngineerController;
 //Home
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 //login
 Route::get('/login', function () {
@@ -72,6 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Show Single Complaint Detail
     Route::get('complaint/{id}', [complaintController::class, 'show'])->name('view.complaint');
+
+    //Complaints Assign to the Service Engineer
+    Route::put('assign-complaint/{id}', [complaintController::class, 'assignServiceEngineer'])->name('assign.complaint');
 
 
 

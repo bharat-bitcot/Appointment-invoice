@@ -20,10 +20,20 @@ class ManageServiceEngineerController extends Controller
      */
     public function index() {
 
-        $users = User::where('role_id',4)->paginate(10);
+        //get current user id
+        $userId = Auth::id();
 
-        //display dashboard view
-        return view('engineer.serviceEngineerLists', [ 'users' => $users ]);
+        //get all detail by user id
+        $currentuser = User::find( $userId );
+
+        if( $currentuser->role_id == 3 ){
+            $users = User::where('role_id',4)->paginate(10);
+
+            //display dashboard view
+            return view('engineer.serviceEngineerLists', [ 'users' => $users ]);
+        }
+
+        return redirect("home");
 
     }
 
