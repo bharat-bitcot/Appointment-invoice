@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\complaintController;
 use App\Http\Controllers\ManageServiceEngineerController;
+use App\Http\Controllers\InvoiceController;
 
 
 /*
@@ -96,6 +97,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     //new Register Service Engineer
     Route::post('register-service-engineer', [ManageServiceEngineerController::class, 'create'])->name('save.serviceEngineer');
+
+
+    /**
+     * Invoice
+     *
+     */
+
+    //Create Invoice by Service Engineer
+    Route::get('create-invoice/{id}', [InvoiceController::class, 'create'])->name('create.invoice');
+
+    //save Invoice by Service Engineer
+    Route::post('save-invoice/{id}', [InvoiceController::class, 'save'])->name('save.invoice');
+
 
 
 

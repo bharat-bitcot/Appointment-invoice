@@ -25,10 +25,20 @@ class invoice extends Model
     protected $fillable = [
         'manage_service_engineer_id',
         'complaint_id',
-        'description',
+        'address',
+        'phoneno',
+        'shipping',
         'is_sent_mail',
         'payment_status',
         'payment_type'
     ];
+
+    /**
+     * Associated with the invoice item.
+     */
+    public function invoicesItem()
+    {
+        return $this->hasMany(invoicesItem::class);
+    }
 
 }

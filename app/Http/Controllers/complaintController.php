@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Complaint\AddComplaintRequest;
 use App\Models\complaint;
+use App\Models\invoice;
 use App\Models\manageServiceEngineer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -70,6 +71,8 @@ class complaintController extends Controller
 
             $complaint = complaint::find($id);
 
+
+            //get assign service engineer
             $getComplaintAssignData = manageServiceEngineer::with(['user'])->where('complaint_id',$id)->first();
             $service_engineers = '';
             if( !$getComplaintAssignData ) {
@@ -77,9 +80,14 @@ class complaintController extends Controller
             }
 
 
+            //get Invoice detail
+            $getInvoiceData = invoice::with(['invoicesItem'])->where('complaint_id',$id)->get();
+
+
+
 
             //display Complain view
-            return view('complaints.complaintShow', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaint' => $complaint, 'is_assign_service_engineer' => $getComplaintAssignData , 'service_engineer_lists' => $service_engineers  ]);
+            return view('complaints.complaintShow', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaint' => $complaint, 'is_assign_service_engineer' => $getComplaintAssignData , 'service_engineer_lists' => $service_engineers , 'invoices' => $getInvoiceData  ]);
         }
         return redirect("login");
     }

@@ -20,6 +20,10 @@ return new class extends Migration
             $table->unsignedBigInteger('complaint_id')->nullable()->comment('Relation with complaint table');
 
             $table->text('description')->collation('utf8mb4_unicode_ci')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

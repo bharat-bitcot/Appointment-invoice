@@ -10,6 +10,12 @@
                     <button type="button" class="btn btn-danger btn-lg pull-right" data-toggle="modal" data-target="#AssignServiceEngineerModel" > Assign Service Engineer </button>
                     @endif
                 @endif
+
+                @if ( $role_id == 4 )
+
+                    <a href="{{ route('create.invoice', $complaint->id ) }}" class="btn btn-danger btn-lg pull-right" > Create Invoice </a>
+                @endif
+
                 <a href="{{ route('dashboard') }}" class="btn btn-info btn-lg pull-right" > Back </a>
             </h1>
 
@@ -68,7 +74,7 @@
 
             @if( $is_assign_service_engineer )
             <div class="col-md-10">
-                <h2> Assign Engineer </h2>
+                <h2> Assigned Engineer </h2>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <h4 class="list-group-item-heading"> Name </h4>
@@ -99,6 +105,28 @@
                     @endif
                 </ul>
             </div>
+            @endif
+
+            <?php
+               // dd( $invoices );
+            ?>
+            @if( $invoices )
+                <div class="col-md-10">
+                    <h2> Invoice Lists </h2>
+                    <ul class="list-group">
+                        @foreach ($invoices as  $invoice)
+                            <li class="list-group-item">
+                                <h4 class="list-group-item-heading">
+                                    {{ $invoice->address }}
+                                    <a href="#" class="btn btn-primary pull-right">View </a>
+                                </h4>
+                                <h4 class="list-group-item-heading">
+                                    {{ $invoice->phoneno }}
+                                </h4>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
         </div>
     </div>
