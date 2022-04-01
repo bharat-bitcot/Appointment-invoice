@@ -5,11 +5,8 @@
     <div class="row">
         <div class="col-md-12 jumbotron">
             <h1> Register Complaint </h1>
-            <a href="{{ route('dashboard') }}" class="btn btn-info btn-lg pull-right" > Back </a>
+
             <div class="col-md-12">
-
-
-
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-8">
@@ -63,6 +60,7 @@
 
                         <div class="form-group text-center">
                             <div class="col-sm-offset-2 col-sm-10">
+                                <a href="{{ route('dashboard') }}" class="btn btn-info btn-lg" > Back </a>
                                 <button type="submit" class="btn btn-danger  btn-lg">Submit</button>
                             </div>
                         </div>

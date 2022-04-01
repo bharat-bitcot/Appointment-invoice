@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Complaint\AddComplaintRequest;
 use App\Models\complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class complaintController extends Controller
@@ -47,5 +48,23 @@ class complaintController extends Controller
                 'message'    => $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     * show complaint detail
+     *
+     * @param Request $request
+     *
+     * @returen view
+     */
+    public function show( Request $request, $id ) {
+        if( Auth::check() ) {
+
+            $complaint = complaint::find($id);
+
+            //display Complain view
+            return view('complaints.complaintShow', [ 'complaint' => $complaint ]);
+        }
+        return redirect("login");
     }
 }

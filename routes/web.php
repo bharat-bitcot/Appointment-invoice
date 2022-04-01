@@ -59,11 +59,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Register Complaint
     Route::get('register-complaint', function () {
-        return view('complaintForm');
+        return view('complaints.complaintForm');
     })->name('add.complaint');
 
     //new Complaint Raise
     Route::post('register-complaint', [complaintController::class, 'create'])->name('save.complaint');
+
+    //Show Single Complaint Detail
+    Route::get('complaint/{id}', [complaintController::class, 'show'])->name('view.complaint');
 
     Route::get('user/profile', function () {
         // Uses Auth Middleware

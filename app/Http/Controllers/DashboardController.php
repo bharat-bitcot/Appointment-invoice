@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\complaint;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +25,12 @@ class DashboardController extends Controller
         $currentuser = User::find( $userId );
 
         // check the conditionn
-        if( $currentuser  ) {
+        if( isset( $currentuser ) &&  $currentuser->role_id == 5 ) {
 
+            //get all complain by user id
+            $complaints = complaint::where('user_id',$userId)->paginate(10);
             //display dashboard view
-            return view('dashboard', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id ]);
+            return view('dashboard.dashboard', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaints' => $complaints ]);
 
         }
 
