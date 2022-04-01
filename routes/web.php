@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\complaintController;
+use App\Http\Controllers\ManageServiceEngineerController;
 
 
 /*
@@ -57,6 +58,10 @@ Route::group(['middleware' => 'auth'], function () {
     //dashbaord
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    /**
+     * Complaint Section
+     */
+
     //Register Complaint
     Route::get('register-complaint', function () {
         return view('complaints.complaintForm');
@@ -68,6 +73,32 @@ Route::group(['middleware' => 'auth'], function () {
     //Show Single Complaint Detail
     Route::get('complaint/{id}', [complaintController::class, 'show'])->name('view.complaint');
 
+
+
+    /**
+     * service Engineer
+     */
+
+    //Display all Lists of Service Engineer
+    Route::get('list-service-engineer', [ManageServiceEngineerController::class, 'index'])->name('list.serviceEngineer');
+
+    //Show Single  Service Engineer Detail
+    Route::get('service-engineer/{id}', [ManageServiceEngineerController::class, 'show'])->name('view.serviceEngineer');
+
+    //Register Service Engineer Form
+    Route::view('register-service-engineer', 'engineer.engineerForm')->name('register.serviceEngineer');
+
+    //new Register Service Engineer
+    Route::post('register-service-engineer', [ManageServiceEngineerController::class, 'create'])->name('save.serviceEngineer');
+
+
+
+
+
+
+    /**
+     * Profile
+     */
     Route::get('user/profile', function () {
         // Uses Auth Middleware
     });

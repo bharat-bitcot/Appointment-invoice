@@ -4,7 +4,11 @@
 <div id="complaint" class="container-fluid" style="margin:2% auto;">
     <div class="row">
         <div class="col-md-12 jumbotron">
-            <h1> Complaint Details <a href="{{ route('dashboard') }}" class="btn btn-info pull-right" > Back </a></h1>
+            <h1> Complaint Details
+
+                <a href="{{ route('dashboard') }}" class="btn btn-danger pull-right" > Assign Service Engineer </a>
+                <a href="{{ route('dashboard') }}" class="btn btn-info pull-right" > Back </a>
+            </h1>
 
             <div class="col-md-10">
                 <ul class="list-group">

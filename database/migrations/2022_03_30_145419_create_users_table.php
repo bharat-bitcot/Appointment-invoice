@@ -22,16 +22,16 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->string('first_name',50)->nullable();
-            $table->string('middle_name',50)->nullable();
-            $table->string('last_name',50)->nullable();
+            $table->string('first_name',20)->nullable();
+            $table->string('middle_name',20)->nullable();
+            $table->string('last_name',20)->nullable();
             $table->date('dob')->nullable();
             $table->enum('gender', ['male', 'female','other'])->default('male');;
 
-            $table->string('phone',40)->nullable();
-            $table->string('city',100)->nullable();
-            $table->string('state',100)->nullable();
-            $table->string('country',50)->nullable();
+            $table->string('phone',15)->nullable();
+            $table->string('city',20)->nullable();
+            $table->string('state',30)->nullable();
+            $table->string('country',30)->nullable();
 
 
 

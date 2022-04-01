@@ -29,10 +29,17 @@ class DashboardController extends Controller
 
             //get all complain by user id
             $complaints = complaint::where('user_id',$userId)->paginate(10);
-            //display dashboard view
-            return view('dashboard.dashboard', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaints' => $complaints ]);
 
+        }elseif( isset( $currentuser ) &&  $currentuser->role_id == 4 ) {
+
+        }elseif( isset( $currentuser ) &&  $currentuser->role_id == 3 ) {
+
+            //get all complain
+            $complaints = complaint::orderBy('id','DESC')->paginate(10);
         }
+
+        //display dashboard view
+        return view('dashboard.dashboard', [ 'users' => $currentuser , 'role_id' => $currentuser->role_id, 'complaints' => $complaints ]);
 
     }
 }

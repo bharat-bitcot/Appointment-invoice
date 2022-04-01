@@ -254,6 +254,7 @@
                     <li><a href="#contact">CONTACT</a></li>
 
                     @auth
+                        <li><a href="{{ route('dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"> Dashboard </a></li>
                         <li><a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"> Logout </a></li>
                     @else
                         <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
