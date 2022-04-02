@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('generate_id',20)->collation('utf8mb4_unicode_ci')->nullable();
-            $table->unsignedBigInteger('manage_service_engineer_id')->nullable()->comment('Relation with manage_service_engineers table');
+            $table->unsignedBigInteger('user_id')->nullable()->comment('Relation with user table');
             $table->unsignedBigInteger('complaint_id')->nullable()->comment('Relation with complaint table');
 
             $table->text('address')->collation('utf8mb4_unicode_ci')->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->tinyInteger('payment_status')->default(1)->comment('0 = pending , 1 = completed');
             $table->tinyInteger('payment_type')->default(0)->comment('0 = cash , 1 = via phonepe , 0 = other');
 
-            $table->foreign('manage_service_engineer_id')->references('id')->on('manage_service_engineers')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('cascade');
 
             $table->timestamps();
