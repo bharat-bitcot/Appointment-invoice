@@ -59,32 +59,25 @@ This model is built in Laravel Framework.They can easily manage the invoice base
 - Check mysql username and password
 
 #### Step 4
+- Run the below-given commands one by one on CMD.
 - composer update
-
-#### Step 5
 - php artisan key:generate
-
-#### Step 6
 - php artisan migrate:fresh
-
-#### Step 7
-php artisan db:seed
-
-#### Step 8
+- php artisan db:seed
 - Php artisan cache:clear
 - php artisan config:clear
 - php artisan route:clear
 
-#### Step 9
+#### Step 5
 - php artisan serve if set local server
 
-#### Step 10
+#### Step 6
 - Now to see the front end enter URL like http://127.0.0.1:8000/
 
 
 ## Author
 
-- [Bharat bhokre][link-author]
+- Bharat bhokre
 
 ## Security
 
