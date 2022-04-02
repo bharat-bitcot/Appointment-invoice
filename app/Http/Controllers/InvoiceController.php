@@ -68,7 +68,7 @@ class InvoiceController extends Controller
             //build array
             $input = [
                 'generate_id'                       => $token,
-                'manage_service_engineer_id'        => auth()->user()->id,
+                'user_id'                           => auth()->user()->id,
                 'complaint_id'                      => $id,
                 'address'                           => $request['address'],
                 'phoneno'                           => $request['phone'],

@@ -24,7 +24,7 @@ class invoice extends Model
      */
     protected $fillable = [
         'generate_id',
-        'manage_service_engineer_id',
+        'user_id',
         'complaint_id',
         'address',
         'phoneno',
@@ -39,7 +39,7 @@ class invoice extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'manage_service_engineer_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
