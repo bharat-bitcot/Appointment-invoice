@@ -74,6 +74,18 @@ This model is built in Laravel Framework.They can easily manage the invoice base
 #### Step 6
 - Now to see the front end enter URL like http://127.0.0.1:8000/
 
+## Login Details
+
+### Manager Login 
+- manager@gmail.com/manager
+
+### Service Engineer 
+- Go to login page 
+- Login With manager credentials
+- Then Create a new service engineer
+
+### Customer 
+- Go to register page
 
 ## Author
 
